@@ -1,5 +1,9 @@
+import * as React from 'react'
 import { forwardRef } from 'react'
+
 import type { Goods } from '../../../models'
+
+import './ListItem.css'
 
 type Props = {
   good: Goods

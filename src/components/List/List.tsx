@@ -1,6 +1,10 @@
 import { type FC, useRef, useEffect } from 'react'
+
 import ListItem from './parts/ListItem.tsx'
+
 import type { Goods } from '../../models'
+
+import './List.css'
 
 type Props = {
   listSource: Goods[]
