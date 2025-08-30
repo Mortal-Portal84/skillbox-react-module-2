@@ -39,7 +39,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <main className="app">
       <h1>Список покупок</h1>
 
       <List
@@ -49,8 +49,8 @@ const App = () => {
         onRemoveItem={handleRemoveItem}
       />
 
-      <button onClick={handleAddNewItem}>Новый элемент</button>
-    </>
+      <button className="create-item-button" onClick={handleAddNewItem}>Новый элемент</button>
+    </main>
   )
 }
 
