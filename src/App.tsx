@@ -1,42 +1,17 @@
-import { useState } from 'react'
-
 import List from './components/List'
 
-import type { Goods } from './models'
-import goodsList from './api'
+import { useList } from './hooks/useList.ts'
 
 import './App.css'
 
 const App = () => {
-  const [list, setList] = useState<Goods[]>(goodsList)
-
-  const handleChangeValue = (id: string, value: string) => {
-    setList(prevState =>
-      prevState.map(item =>
-        item.id === id ? { ...item, title: value } : item
-      )
-    )
-  }
-
-  const handleToggleDone = (id: string) => {
-    setList(prevState =>
-      prevState.map(item =>
-        item.id === id ? { ...item, isDone: !item.isDone } : item
-      )
-    )
-  }
-
-  const handleAddNewItem = () => {
-    setList(prevState => [...prevState, {
-      id: crypto.randomUUID(),
-      title: '',
-      isDone: false
-    }])
-  }
-
-  const handleRemoveItem = (id: string) => {
-    setList(prevState => prevState.filter(item => item.id !== id))
-  }
+  const {
+    list,
+    handleChangeValue,
+    handleToggleDone,
+    handleAddNewItem,
+    handleRemoveItem,
+  } = useList()
 
   return (
     <main className="app">
