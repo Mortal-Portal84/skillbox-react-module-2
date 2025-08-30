@@ -3,7 +3,6 @@ import { useState } from 'react'
 import List from './components/List'
 
 import type { Goods } from './models'
-import { initialItem } from './utils'
 import goodsList from './api'
 
 import './App.css'
@@ -28,14 +27,27 @@ const App = () => {
   }
 
   const handleAddNewItem = () => {
-    setList(prevState => [...prevState, initialItem])
+    setList(prevState => [...prevState, {
+      id: crypto.randomUUID(),
+      title: '',
+      isDone: false
+    }])
+  }
+
+  const handleRemoveItem = (id: string) => {
+    setList(prevState => prevState.filter(item => item.id !== id))
   }
 
   return (
     <>
       <h1>Список покупок</h1>
 
-      <List listSource={list} onChangeValue={handleChangeValue} onToggleDone={handleToggleDone} />
+      <List
+        listSource={list}
+        onChangeValue={handleChangeValue}
+        onToggleDone={handleToggleDone}
+        onRemoveItem={handleRemoveItem}
+      />
 
       <button onClick={handleAddNewItem}>Новый элемент</button>
     </>
