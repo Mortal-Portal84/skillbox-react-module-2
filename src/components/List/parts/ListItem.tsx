@@ -22,7 +22,7 @@ const ListItem = forwardRef<HTMLInputElement, Props>(
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
-        e.preventDefault() // чтобы не сабмитить форму
+        e.preventDefault()
         onToggleDone(good.id)
       }
     }
@@ -30,13 +30,15 @@ const ListItem = forwardRef<HTMLInputElement, Props>(
     return (
       <li className="list__item">
         <input
+          className="item__checkbox"
           type="checkbox"
           checked={good.isDone}
           onChange={() => onToggleDone(good.id)}
-          onKeyDown={handleKeyDown} // <-- ловим Enter
+          onKeyDown={handleKeyDown}
         />
 
         <input
+          className="item__title"
           type="text"
           value={good.title}
           onChange={handleChange}

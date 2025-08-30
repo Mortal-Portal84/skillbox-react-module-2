@@ -21,7 +21,7 @@ const List: FC<Props> = ({ listSource, onChangeValue, onToggleDone, onRemoveItem
   }, [listSource.length])
 
   return (
-    <ul className="list-item">
+    <ul className="list">
       {listSource.map((listItem, index) => (
         <ListItem
           key={listItem.id}
